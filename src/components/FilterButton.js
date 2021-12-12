@@ -3,7 +3,8 @@ import styled from 'styled-components'
 
 function FilterButton({btnLabel,handleOnClick}) {
     return (
-        <FilterButtonWrapper onClick={handleOnClick}>
+        <FilterButtonWrapper 
+            onClick={handleOnClick}>
             {btnLabel}
         </FilterButtonWrapper>
     )
@@ -28,7 +29,14 @@ const FilterButtonWrapper = styled.button`
         background: var(--primary-violet);
         border: none;
         color: var(--pure-white);
-
+    }
+ 
+    &:active {
+        
+        background: var(--primary-violet);
+        border: none;
+        color: var(--pure-white);
+    
     }
     
 ` 

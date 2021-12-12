@@ -2,11 +2,11 @@ import React, { useState } from "react"
 import styled from "styled-components"
 import {NavLink as Link } from "react-router-dom"
 import logo from "../assets/images/logo.svg"
-import {FaBars, FaTimes} from 'react-icons/fa'
+import {FaBars} from 'react-icons/fa'
 import {MdClose} from 'react-icons/md'
 
 function Header() {
-  const [toggleMenu, showToggleMenu] = useState(false) 
+  const [toggleMenu, showToggleMenu] = useState(false);
   return (
     <>
       <Nav>
@@ -20,18 +20,37 @@ function Header() {
             <CloseBtn onClick={() => showToggleMenu(!toggleMenu)} />
         }
         <NavMenu className={!toggleMenu? '': "showPanel"} >
-          <NavLink to="">Home</NavLink>
-          <NavLink to="">Results</NavLink>
-          <NavLink to="">Jobs Release</NavLink>
+          <NavLink to="/">Home</NavLink>
+          <NavLink to="/post-result/:postId">Results</NavLink>
+          <NavLink to="/post-admitcard/:postId">Jobs Release</NavLink>
           <NavLink to="">Admit Card</NavLink>
+          {/* <NavLink to="/image-resizer">
+            <ShineHeadline>
+              Image Resizer
+            </ShineHeadline>
+            </NavLink> */}
+            {
+              window.innerWidth < '768px'?
+              <NavBtnLink to="/image-resizer" >
+              Image Resizer
+          </NavBtnLink>
+              :
+              null
+            }
+            
         </NavMenu>
         <NavBtn>
-            <NavBtnLink to="/signup" >
-                SignUp
+        {/* <PrimaryButton
+              handleBtn={() => setshowModal(!showModal)}
+             btnLabel="Resize Image"
+             /> */}
+            <NavBtnLink to="/image-resizer" >
+                Image Resizer
             </NavBtnLink>
+           
         </NavBtn>
       </Nav>
-    </>
+           </>
   )
 }
 
@@ -44,6 +63,9 @@ const Nav = styled.nav`
   height: 80px;
   z-index: 5;
   justify-content: space-between;
+  box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.5);
+-webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.5);
+-moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.5);
 `
 
 
@@ -73,9 +95,10 @@ const NavMenu = styled.div`
       left: 0px;
       justify-content: center;
       align-items: center;
-      height: 200px;
+      height: 250px;
       width: 100vw;
       z-index: 99;
+      padding-bottom: 1rem;
       background: var(--primary-violet);
   }
 
@@ -157,11 +180,62 @@ const NavBtnLink = styled(Link)`
     cursor: pointer;
     text-decoration: none;
     transition: all 0.2s ease-in-out;
-
     &:hover{
         transition: all 0.2s ease-in-out;
         background: #fff;
         border: 1px solid var(--primary-violet);
         color: var(--grey);
     }
+
+    @media(max-width: 768px) {
+      background: #fff;
+      color: black;
+      &:hover{
+        transition:none;
+        background: #fff;
+        border: #fff;
+        color: black;
+    }
+    }
+`
+// const Modal = styled.div`
+//   position: absolute;
+//   background-color: cadetblue;
+//   width: 40vw;
+//   height: 50vh;
+//   left: 50%;
+// `
+
+// const ModalContent = styled.div`
+
+
+// `
+const ShineHeadline = styled.h2`
+  color: var(--primary-violet);
+  font-size: 1rem;
+  color: var(--grey);
+  text-transform: uppercase;
+  cursor: pointer;
+  text-transform: uppercase;
+  background-image: linear-gradient(
+    -225deg,
+    #754fdf 0%,
+    #754fdf 29%,
+    #755fdf 67%,
+    #ffff 100%
+  );
+  background-size: auto auto;
+  background-clip: border-box;
+  background-size: 200% auto;
+  color: #fff;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: textclip 4s linear infinite;
+  display: inline-block;
+  @keyframes textclip {
+    to {
+      background-position: 200% center;
+    }
+  }
 `

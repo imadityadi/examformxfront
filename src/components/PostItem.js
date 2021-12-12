@@ -2,12 +2,12 @@ import React from 'react'
 import styled from 'styled-components'
 import {BsChevronDoubleRight} from 'react-icons/bs'
 import { Link} from 'react-router-dom'
-function PostItem({postTitle}) {
+function PostItem({postTitle, link}) {
     return (
-            <PostLink to="">
-        <PostItemCont>
+            <PostLink to={link}>
+            <PostItemCont>
                 {postTitle}
-        </PostItemCont>
+            </PostItemCont>
             <BsChevronDoubleRight size={20} color='#754FDF' />
             </PostLink>
     )
@@ -20,7 +20,7 @@ const PostItemCont = styled.div`
 `
 
 const PostLink = styled(Link)`
-    font-size: 16px;
+    font-size: 0.9rem;
     text-decoration: none;
     color: var(--grey);
     display: flex;
@@ -38,9 +38,12 @@ const PostLink = styled(Link)`
 -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.5);
 -moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.5);
     &:hover{
-        font-size: 17px;
+        /* font-size: 0.99rem; */
         transition: 0.5s;
         color: var(--primary-violet)
+    }
+    @media screen and (max-width: 768px){
+        width: 17.5rem;
     }
 
 `

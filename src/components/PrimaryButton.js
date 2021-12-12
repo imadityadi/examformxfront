@@ -1,9 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
 
-function PrimaryButton({btnLabel}) {
+function PrimaryButton({btnLabel, handleBtn}) {
     return (
-       <Button>
+       <Button onClick={handleBtn}>
            {btnLabel}
        </Button> 
     )
@@ -12,12 +12,20 @@ function PrimaryButton({btnLabel}) {
 export default PrimaryButton
 
 const Button = styled.button`
-    padding: 0.5rem 2rem;
+    border-radius: 5px;
     background: var(--primary-violet);
-    border-radius: 10px;
-    font-size: medium;
-    font-weight: 500;
+    padding: 10px 22px;
+    color: #fff;
     border: none;
-    color: var(--pure-white);
+    outline: none;
     cursor: pointer;
+    text-decoration: none;
+    transition: all 0.2s ease-in-out;
+
+    &:hover{
+        transition: all 0.2s ease-in-out;
+        background: #fff;
+        border: 1px solid var(--primary-violet);
+        color: var(--grey);
+    }
 `

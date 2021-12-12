@@ -1,29 +1,27 @@
-@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600&display=swap");
+
 body {
   margin: 0;
-  font-family: 'Josefin Sans', sans-serif;
+  font-family: "Poppins", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 ::-webkit-scrollbar {
-  width: 0;  /* Remove scrollbar space */
-  background: transparent;  /* Optional: just make scrollbar invisible */
+  width: 0; /* Remove scrollbar space */
+  background: transparent; /* Optional: just make scrollbar invisible */
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
-:root{
-  --primary-violet: #754FDF;
-  --secondry-white: #F6F8FC;
+:root {
+  --primary-violet: #754fdf;
+  --secondry-white: #f6f8fc;
   --pure-white: #ffffff;
   --grey: #414141;
   --light-grey: #00000062;
- 
-
 }
 
 /* Primary violet color = #754FDF 
@@ -31,4 +29,3 @@ code {
    
 
 */
-

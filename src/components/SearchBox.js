@@ -5,10 +5,10 @@ import { FaSearch } from "react-icons/fa"
 function SearchBox({placeholder,handleChange,value}) {
   return (
     <SearchBoxWrapper>
-      <input value={value} onChange={handleChange} placeholder={placeholder} type="text" />
+      <input 
+        value={value} onChange={handleChange} placeholder={placeholder} type="text" />
       <SearchIcon>
       <FaSearch size={20} color="#fff" />
-
       </SearchIcon>
     </SearchBoxWrapper>
     
@@ -49,8 +49,15 @@ const SearchBoxWrapper = styled.div`
     :focus {
       outline: none;
     }
-
+    
   }
+
+  input::placeholder {
+    color: var(--grey);
+    font-size: 1rem;
+  
+  }
+
 
   `
 const SearchIcon = styled.span`
