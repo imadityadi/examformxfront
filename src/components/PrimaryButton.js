@@ -23,9 +23,9 @@ const Button = styled.button`
     transition: all 0.2s ease-in-out;
 
     &:hover{
-        transition: all 0.2s ease-in-out;
+        transition: 0.2s ease-in-out;
         background: #fff;
-        border: 1px solid var(--primary-violet);
+        outline: 1.2px solid var(--primary-violet);
         color: var(--grey);
     }
 `

@@ -52,7 +52,7 @@ function PostDetails() {
   }, [serverDataArr.applylink])
 
   //   console.log(applyLinkUrl)
-  console.log(serverDataArr.applylink)
+  // console.log(serverDataArr.applylink)
 
   useEffect(() => {
     let tempPostId = postId.split(":")[1]
@@ -140,9 +140,13 @@ function PostDetails() {
               date3Value={serverDataArr.lastDateRegister}
               date4Title="Last Date to Pay Fee"
               date4Value={serverDataArr.lastdateforfeepay}
+              otherFeeDetails={serverDataArr.otherFeeDetails}
+              docReq={serverDataArr.docReq}
+              otherDates={serverDataArr.otherDates}
+              
             />
           </DetailWrapper>
-
+         
           <Content
             dangerouslySetInnerHTML={{ __html: serverDataArr.editorcontent }}
           ></Content>
@@ -263,6 +267,25 @@ const Content = styled.div`
       list-style-type: none;
     }
   }
+  a strong,
+  h2 a strong ,
+  tr h2  strong a {
+    background: var(--primary-violet);
+    padding: 2px;
+    color: #fff;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.2s ease-in-out;
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.5);
+    -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.5);
+    -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.5);
+  }
+  tr a {
+    text-decoration: none;
+  }
 `
 
 const JobHeader = styled.div`
@@ -270,6 +293,21 @@ const JobHeader = styled.div`
   flex-direction: row;
 `
 
+const MoreInfoCard = styled.div`
+   display: flex;
+    background: var(--pure-white);
+    height: fit-content;
+    justify-content: space-evenly;
+    flex-direction: row;
+    color: black;
+    border-radius: 10px;
+    padding: 0.5rem 1.5rem;
+    margin: 1rem 0rem;
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.5);
+    -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.5);
+    -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.5);
+
+`
 const LoadingContainer = styled.div`
   display: flex;
   width: 100vw;

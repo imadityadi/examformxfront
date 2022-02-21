@@ -289,7 +289,7 @@ function DashBoard() {
           <Title>{!quotes ? null : "-" + author}</Title>
         </div>
       </HeroWrapper>
-      <HeadingCont>
+      <HeadingCont id={currentShowing}>
         <ShineHeadline>{currentShowing}</ShineHeadline>
       </HeadingCont>
       {!loading  ?  (

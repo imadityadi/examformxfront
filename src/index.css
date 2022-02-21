@@ -7,9 +7,17 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-::-webkit-scrollbar {
-  width: 0; /* Remove scrollbar space */
+body::-webkit-scrollbar {
+  width: 0.5rem; /* Remove scrollbar space */
   background: transparent; /* Optional: just make scrollbar invisible */
+  cursor: pointer;
+}
+body::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+body::-webkit-scrollbar-thumb {
+  background-color: #7254c5;
+  outline: 1px solid slategrey;
 }
 
 code {

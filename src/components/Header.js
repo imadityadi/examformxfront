@@ -4,6 +4,7 @@ import {NavLink as Link } from "react-router-dom"
 import logo from "../assets/images/logo.svg"
 import {FaBars} from 'react-icons/fa'
 import {MdClose} from 'react-icons/md'
+import { theme } from "../Theme"
 
 function Header() {
   const [toggleMenu, showToggleMenu] = useState(false);
@@ -21,29 +22,27 @@ function Header() {
         }
         <NavMenu className={!toggleMenu? '': "showPanel"} >
           <NavLink to="/">Home</NavLink>
-          <NavLink to="/post-result/:postId">Results</NavLink>
-          <NavLink to="/post-admitcard/:postId">Jobs Release</NavLink>
-          <NavLink to="">Admit Card</NavLink>
+          <NavLink to="#Admission">Admission</NavLink>
+          <NavLink to="#Latest Jobs">Jobs Release</NavLink>
+          <NavLink to="#Admit Card">Admit Card</NavLink>
           {/* <NavLink to="/image-resizer">
             <ShineHeadline>
               Image Resizer
             </ShineHeadline>
             </NavLink> */}
-            {
-              window.innerWidth < '768px'?
-              <NavBtnLink to="/image-resizer" >
+           
+              <MenuBtnLink to="/image-resizer" >
               Image Resizer
-          </NavBtnLink>
-              :
-              null
-            }
-            
+          </MenuBtnLink>
         </NavMenu>
         <NavBtn>
         {/* <PrimaryButton
               handleBtn={() => setshowModal(!showModal)}
              btnLabel="Resize Image"
              /> */}
+            <MainButton variant="outline" to="/resume" >
+                Make Resume
+            </MainButton>
             <NavBtnLink to="/image-resizer" >
                 Image Resizer
             </NavBtnLink>
@@ -164,7 +163,6 @@ const NavBtn = styled.nav`
     display:flex;
     align-items: center;
     margin-right: 24px;
-
     @media screen and (max-width: 768px){
         display: none;
     }
@@ -181,9 +179,9 @@ const NavBtnLink = styled(Link)`
     text-decoration: none;
     transition: all 0.2s ease-in-out;
     &:hover{
-        transition: all 0.2s ease-in-out;
+        transition: 0.2s ease-in-out;
         background: #fff;
-        border: 1px solid var(--primary-violet);
+        outline: 1.5px solid var(--primary-violet);
         color: var(--grey);
     }
 
@@ -198,18 +196,33 @@ const NavBtnLink = styled(Link)`
     }
     }
 `
-// const Modal = styled.div`
-//   position: absolute;
-//   background-color: cadetblue;
-//   width: 40vw;
-//   height: 50vh;
-//   left: 50%;
-// `
-
-// const ModalContent = styled.div`
 
 
-// `
+const MenuBtnLink = styled(Link)`
+   display: none;
+
+    @media(max-width: 768px) {
+      display: block;
+      border-radius: 5px;
+    background: white;
+    padding: 10px 22px;
+    color: #000;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.2s ease-in-out;
+    &:hover{
+        transition: all 0.2s ease-in-out;
+        background: #fff;
+        border: 1px solid var(--primary-violet);
+        color: #000;
+    }
+
+  }
+
+`
+
 const ShineHeadline = styled.h2`
   color: var(--primary-violet);
   font-size: 1rem;
@@ -238,4 +251,34 @@ const ShineHeadline = styled.h2`
       background-position: 200% center;
     }
   }
+`
+const MainButton = styled(Link)`
+  background: ${({variant}) => variant === "outline"? '#fff' : theme.brand};
+  color: ${({variant}) => variant === "outline"? theme.brand : theme.white};
+  padding: 0.5rem 0.6rem;
+  margin-right: 10px;
+  max-height: 3rem;
+  width: 8rem;
+  font-size: 1.1rem;
+  font-weight: 400;
+  border-radius: 8px;
+  border: ${({variant}) => variant === "outline"? `1.5px solid ${theme.brand}` : "none"};
+  cursor: pointer;
+  font-family: Poppins;
+  transition: 0.2s ease;
+  text-decoration: none;
+
+  :hover {
+    background: ${theme.brandHover};
+    transition: 0.2s ease;
+    color: ${({variant}) => variant === "outline"? theme.white : theme.white};
+
+  }
+  :active {
+    background: ${theme.brandActive};
+    transition: 0.2s ease;
+    outline: 1px solid ${theme.lightWhite100};
+  }
+
+  
 `

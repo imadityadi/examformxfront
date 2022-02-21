@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import {ImPointRight} from 'react-icons/im'
+import {FaSortDown, FaSortUp} from 'react-icons/fa'
 
 function ContentCard({content, cardTitle, pointOneTitle,
     pointOneValue,
@@ -26,12 +27,24 @@ date1Value,
 date2Value,
 date3Value,
 date4Value,
-card2Title
+card2Title,
+docReq,
+otherDates,
+otherFeeDetails
 }) {
 
     const icon = <ImPointRight size={20} color="#754fdf" />
+    const documentReq = 'Photo, sign, aadhar, cast'
+    let   feeNote = 'SC / ST / PH / Saharia: 60/'
+
+    const [showFullDetails, setShowFullDetails] = useState(false)
+
+    function toggleFullDetails () {
+        setShowFullDetails(!showFullDetails)
+    }
     return (
         <Card>
+          <CardContainer> 
           <div className='datacontainer'>
           <h4>{cardTitle}</h4>
           <div  className="value-cont" style={{display: isDate1}}>
@@ -49,7 +62,7 @@ card2Title
              </div>
              <p id="lastdate" > {date2Value}</p>
           </div>
-          <div  style={{display: isDate3}}>
+          <div  className="value-cont" style={{display: isDate3}}>
              <div className="icon-title-cont">
              <p className="titleLabel"> {date3Title}</p>
              {icon}
@@ -101,7 +114,55 @@ card2Title
              </div>
              <p className="pointfourval"> {pointFourValue}</p>
           </div> */}
+          {/* <div className="note-container">
+              <p>
+                  Lorem ipsum dolor sit, amet consectetur adipisicing elit. Cumque, labore deleniti. Natus, provident veritatis asperiores dolorum eos consequuntur nulla vero pariatur sed voluptates cupiditate alias eligendi deserunt adipisci perspiciatis blanditiis!
+              </p>
+          </div> */}
           </div>
+          </CardContainer>
+
+              <>
+              <OtherDetailTitle onClick={toggleFullDetails}>Other Useful Details
+
+                        <div style={{transform:showFullDetails?  'rotate(180deg)': ' rotate(0deg)'}} className='downicon'>
+                        <FaSortDown  onClick={toggleFullDetails} className='downicon' size={25} color="#754fdf" /> 
+
+                        </div>
+              </OtherDetailTitle>
+              
+          <OtherDetailsCard style={{maxHeight: showFullDetails? '100rem': '0rem', }}>
+
+              {
+                  docReq === undefined || otherDates === undefined || otherFeeDetails === undefined ?
+                  <p style={{textAlign: 'center'}}>
+                      Other Details Not Available
+                  </p>
+                  :
+               <>
+                 <div className='content_details'>
+                  <strong>Document Required</strong>
+                    <div dangerouslySetInnerHTML={{ __html: docReq }}>
+
+                    </div>
+              </div>
+              <div  className='content_details'>
+              <strong>Dates</strong>
+              <div dangerouslySetInnerHTML={{ __html: otherDates }}>
+
+                </div>
+              </div>
+              <div  className='content_details'>
+              <strong>Other Fee</strong>
+              <div dangerouslySetInnerHTML={{ __html: otherFeeDetails }}>
+                    
+                </div>
+              </div>
+               </>   
+              }
+             
+          </OtherDetailsCard>
+              </>
         </Card>
     )
 }
@@ -113,7 +174,8 @@ const Card = styled.div`
     background: var(--pure-white);
     height: fit-content;
     justify-content: space-evenly;
-    flex-direction: row;
+    /* align-items: center; */
+    flex-direction: column;
     color: black;
     border-radius: 10px;
     padding: 0.5rem 1.5rem;
@@ -122,6 +184,26 @@ const Card = styled.div`
     -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.5);
     -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.5);
 
+
+
+  
+
+
+  
+ 
+`
+
+const CardContainer = styled.div`
+     display: flex;
+    background: var(--pure-white);
+    height: fit-content;
+    justify-content: space-between;
+    flex-direction: row;
+    color: black;
+    border-radius: 10px;
+    padding: 0.5rem 1.5rem;
+    margin: 1rem 0rem;
+
     @media(max-width: 768px) {
         flex-direction: column;
     }
@@ -129,7 +211,7 @@ const Card = styled.div`
     .datacontainer {
         display:flex;
         width: 45%;
-        flex-direction: column
+        flex-direction: column;
 
     }
     
@@ -151,6 +233,10 @@ const Card = styled.div`
         align-items: center;
         justify-content: space-evenly;
         width: 100%;
+    }
+    .value-cont p {
+        font-size: 1rem;
+        width: 5rem;
     }
     
 
@@ -181,8 +267,9 @@ const Card = styled.div`
         font-weight: '500';
         font-size: 0.9rem;
     }
-        p {
+    .value-cont p {
         font-size: 0.8rem;
+        width: 5rem;
     }
 
     .value-cont {
@@ -191,11 +278,64 @@ const Card = styled.div`
 
      .datacontainer {
          width: 100%;
-     }    
+     }  
+     
+     .note-container {
+         position: absolute;
+         width: 100%;
+     }
     }
 
+`
+const OtherDetailsCard = styled.div`
+    display: flex;
+    background: var(--pure-white);
+    height: fit-content;
+    justify-content: space-evenly;
+    flex-direction: row;
+    overflow: hidden;
+    color: #fff;
+    width: 95%;
+    /* height: fit-content; */
+    /* min-height: fit-content; */
+    /* border: 2px solid var(--primary-violet); */
+    border-radius: 5px;
+    background: var(--primary-violet);
+    margin: 0 2rem;
+    transition: max-height 500ms ease;
+    div {
+        height: fit-content;
+    }
+    @media (max-width: 768px){
+        flex-direction: column;
+        margin: 0;
+        /* min-height: 100%; */
+    }
 
+    .content_details {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        padding: 0.5rem;
+        width: 30%;
+        min-width: 30%;
+        @media (max-width: 768px){
+            width: 90%;
+            min-width: unset;
+        }
+    }
+    .content_details strong {
+        text-align: center;
+    }
+`
+const OtherDetailTitle = styled.h4`
+    padding: 0rem 2rem;
+    cursor: pointer;
+    .downicon {
+  float: right;
+cursor: pointer;
+transition: 1s ease;
 
-  
- 
+       
+    }
 `

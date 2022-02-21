@@ -8,6 +8,9 @@ import PostDetails from "./screens/PostDetails";
 import ImageResize from "./screens/ImageResize";
 import AdmitCardView from './screens/AdmitCardView'
 import ResultView from './screens/ResultView'
+import ResumeMaker from "./screens/ResumeMaker";
+import Edit from "./screens/Edit";
+import Builder from "./screens/Builder";
 
 
 function App() {
@@ -19,6 +22,9 @@ function App() {
        <Route  path="/post/:postId" component={PostDetails}/>
        <Route  path="/post-admitcard/:postId" component={AdmitCardView}/>
        <Route  path="/post-result/:postId" component={ResultView}/>
+       <Route  path="/resumemaker" component={ResumeMaker}/>
+       <Route  path="/edit" component={Edit}/>
+       <Route  path="/resume" component={Builder}/>
      </Switch>
     </Router>
   )
